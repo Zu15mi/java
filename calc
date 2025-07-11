@@ -1,0 +1,28 @@
+//cals
+import java.io.*;
+import java.util.Scanner;
+class cals
+{
+  public static void main(String args[]) throws IOException
+{
+	float s,x,pox,fact;
+	int i,n;
+	Scanner S = new Scanner(System.in);
+	System.out.print("Enter the value of 'x' between 1 to 5 : ");
+	 x=S.nextInt();
+	 
+	 n=10;
+	 s=1;
+	 i=1;
+	 pox=1;
+	 fact=1;
+	while(i<=n)
+	 {
+		 pox=pox*x;
+		 fact=fact*i;
+		 s=s+pox/fact;
+		 i=i+1;
+	 }
+	System.out.println("x="+x+ "n=" +n+ "sum=" +s); 
+	 }
+ }

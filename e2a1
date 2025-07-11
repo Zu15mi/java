@@ -1,0 +1,16 @@
+import java.io.*;
+import java.util.Scanner;
+class ex1activity2
+{
+  public static void main(String args[]) throws IOException
+{
+	double f, c=0;
+	Scanner S = new Scanner(System.in);
+	for(int i=0 ; i<100; i++,c++)
+	{
+		f=9*c/5+32;
+	System.out.println("Celsius :" +c+ "c"+ "\t" + "Fahrenheit :" +f +"f");
+	}
+}
+}
+	

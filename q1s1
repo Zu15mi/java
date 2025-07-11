@@ -1,0 +1,51 @@
+import java.io.*;
+import java.util.Scanner;
+class IS_Prime
+
+  {
+  int is_prime(int n)
+ 
+{
+int flag;
+int n1,i,r;
+n1=n/2;
+if(n<=1)
+{
+flag=0;
+return flag;
+}
+flag=1; //flag=1 means n is a prime no
+for(i=2; i<=n1; i++)
+{
+	r=n%i;
+	if(r==0)
+	{
+		flag=0;
+		break;
+	}
+}
+return flag;
+}
+  }
+  class q1s1
+  {
+	  public static void main(String args[])
+	  {
+		  int i,n, ncount=0, flag;
+		   Scanner S = new Scanner(System.in);
+		   IS_Prime ip=new IS_Prime();
+  System.out.println("Enter n(2-2000)=");
+  n=S.nextInt();
+  System.out.println("Prime nos <="+n+"--->");
+  for(i=2; i<=n; i++)
+  {
+	  flag=ip.is_prime(i);
+	  if(flag==1)
+	  {
+		  System.out.print(i+" ");
+		  ncount = ncount+1;
+	  }
+  }
+  System.out.println("\nTotal Prime nos found=" +ncount);
+	  }
+  }

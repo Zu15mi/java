@@ -1,0 +1,46 @@
+import java.io.*;
+import java.util.Scanner;
+class EXPX
+{
+	double expx(float x)
+	{
+		double cexp,fact,pox,term,eps;
+		long n;
+		cexp=1;
+		eps=cexp;
+		fact=1;
+		pox=1;
+		n=1;
+		while(eps>1e-16)
+		{
+			pox=pox*x;
+		fact=fact*n;
+		term=pox/fact;
+		if(term<0)
+		
+			eps=-term;
+		
+		else
+		
+		 eps=term;
+			cexp=cexp+term;
+			n=n+1;
+		}
+		return cexp;
+		}
+	}
+	class q2s1
+	{
+		public static void main(String args[]) throws IOException
+		{
+			double y;
+			float x;
+			Scanner S = new Scanner(System.in);
+			EXPX E=new EXPX();
+			for(x=.1f; x<=2.0f; x=x+.1f)
+			{
+				y=E.expx(x);
+				System.out.println("exp("+x+")="+y);
+			}
+		}
+    }

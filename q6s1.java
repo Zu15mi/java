@@ -42,7 +42,7 @@ void display(int a[], int n)
 else{
 System.out.print(a[i]);
 System.out.print(" Press<Enter>key--->");
-ch=SC1.next();
+ch=SC1.nextLine();
 }}}}
 class q6s1
 {

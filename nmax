@@ -1,0 +1,28 @@
+import java.util.Arrays;
+import java.util.Scanner;
+
+ public class nmax {
+  static void main(String args[]) throws IOException
+  {
+  Scanner S = new Scanner(System.in);
+  System.out.print("Enter size of your array :");
+  int size=S.nextInt();
+  int[] arr=new int[size];
+  System.out.println("Enter" +size+ "elements :");
+  for(i=0; i<size; i++)
+  {
+  arr[]=S.nextInt();
+  }
+  System.out.print("Enter nto find nth max) :");
+  int n=S.nextInt();
+  if(n>size || n<=0)
+  {
+  System.out.println("invalid n! It should be btw 1 &"+size);
+  return;
+  }
+  Arrays.sort(arr);
+  int nthMax = arr[size - n]; int nthMax = arr[size - n]; // n-th max is at index size - n
+
+        System.out.println("The " + n + "-th maximum element is: " + nthMax);
+    }
+}

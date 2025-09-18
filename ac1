@@ -1,0 +1,44 @@
+Ac1 - write a program in java to extract all words from any file.display all words on screen and also save the same words in some out file. Use 4 command line arguments.
+Ex: suppose our program file name=word_extraction.java
+Name of word file=word_extraction.java
+Run your code as follows:
+C:\java\bin>java word_extraction
+Word_extraction.java wordfile.java <enter>
+…image…
+import java.io.*;
+import java.util.Scanner;
+
+class word_extraction_2
+{
+public static void main(String[] args) 
+{
+int argc,n,nw,ch;
+int flag;
+argc=args.length;
+FileInputStream fp1=new FileInputStream(args[0]);
+FileOutputStream fp2=new FileOutputStream(args[1]);
+nw=0; //nw=no of words
+flag=1;
+n=0; //n=size of input file
+while((ch=fp1.read()) !=-1)
+{
+if((ch>=65 && ch<=90) || (ch>=97 && ch<=122))
+{
+if(flag==1)
+{
+nw=nw+1;
+flag=0;
+}
+System.out.print((char)ch);
+fp2.write(ch);
+}
+else is(flag==0)
+{
+System.out.println();
+fp2.write(10);
+flag=1;
+}
+}
+fp1.close();
+fp2.close();
+System.out.println("total no of words extracted=" +nw);

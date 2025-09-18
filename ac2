@@ -1,0 +1,40 @@
+Ac2 - write a program in java to convert all characters in file to corresponding bits.use command line arguments.
+Ex – suppose our input filename=myfile.txt which contains ABCD.
+The output file name=bitfile.txt which contains
+010000101000010100001101000100
+C:\java\bin>java bit_cinversion myfile.txt
+Bitfile.txt <enter>
+:- it will read myfile.txt and convert all characters to bits and will transfer all bits to bitfile.txt. 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+public class BitInversion {
+    public static void main(String[] args) {
+        if (args.length != 2) {
+            System.err.println("Usage: java BitInversion <inputFile> <outputFile>");
+            System.exit(1);
+        }
+
+        String inputFile = args[0];
+        String outputFile = args[1];
+
+        try (FileInputStream fis = new FileInputStream(inputFile);
+             FileOutputStream fos = new FileOutputStream(outputFile)) {
+
+            int byteRead;
+            while ((byteRead = fis.read()) != -1) {
+                // Convert the byte to an 8-bit binary string
+                String bits = String.format("%8s", Integer.toBinaryString(byteRead & 0xFF)).replace(' ', '0');
+                // Write each bit as a character ('0' or '1') to the output file
+                for (char bit : bits.toCharArray()) {
+                    fos.write(bit);
+                }
+            }
+
+        } catch (IOException e) {
+            System.err.println("I/O Error: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+}

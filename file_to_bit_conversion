@@ -50,6 +50,8 @@ fp1.close();
 fp2.close();
 }
 }
+myfile.txt
+ABCD
 C:\Java\bin>javac file_to_bit_conversion.java
 
 C:\Java\bin>java file_to_bit_conversion myfile.txt bitfile.txt

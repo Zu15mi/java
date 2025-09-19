@@ -55,3 +55,4 @@ C:\Java\bin>javac file_to_bit_conversion.java
 C:\Java\bin>java file_to_bit_conversion myfile.txt bitfile.txt
 01000001010000100100001101000100
 size of <myfile.txt>=4Bytes
+java file_to_bit_conversion file_to_bit_conversion.java bitfile.txt

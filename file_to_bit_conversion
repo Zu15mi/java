@@ -1,0 +1,57 @@
+//file_to_bit_conversion.java: write a program in java to convert a file to corresponding bits.
+//all bits to be transferred to some output file.
+import java.io.*;
+
+class txt_to_bit_conversion
+{
+void bit_conversion(int bit[], int ch)
+{
+int mask;
+int i,k,n1;
+int n;
+mask=128;
+n1=0;
+n=0;
+while(mask>0)
+{
+k=ch & mask;
+if(k!=0)
+bit[n]=1;
+else
+bit[n]=0;
+n=n+1;
+mask=mask>>1;
+}
+}
+}
+
+class file_to_bit_conversion
+{
+	public static void main(String args[])throws IOException 
+{
+	int n,i,ch;
+int bit[]=new int[8];
+FileInputStream fp1=new FileInputStream(args[0]);
+FileOutputStream fp2=new FileOutputStream(args[1]);
+n=0; //n= no of bytes in input file
+txt_to_bit_conversion TB=new txt_to_bit_conversion();
+while((ch=fp1.read()) !=-1)
+{
+	n=n+1;
+	TB.bit_conversion(bit,ch);
+	for(i=0;i<8;i++)
+	{
+		System.out.print(bit[i]);
+		fp2.write(bit[i]+48);
+	}
+}
+System.out.println("\nsize of <"+args[0]+">="+n+"Bytes");
+fp1.close();
+fp2.close();
+}
+}
+C:\Java\bin>javac file_to_bit_conversion.java
+
+C:\Java\bin>java file_to_bit_conversion myfile.txt bitfile.txt
+01000001010000100100001101000100
+size of <myfile.txt>=4Bytes

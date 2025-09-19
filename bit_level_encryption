@@ -1,0 +1,95 @@
+/*
+write a program to convert any file to corresponding bits.now perform some simple encryption algorithm on all bits:
+step 1: change all'0' bits to bit '1' and '1' to '0'.do for all characters.
+step 2: apply bitwise XOR as follows
+Bit[7]-bit[0]^bit[7]
+Bit[6]-bit[1]^bit[6]
+Bit[5]-bit[2]^bit[5]
+Bit[4]-bit[3]^bit[4]
+step 3: write the modified characters on some output file.
+note: initially you may choose an input file which contains
+ABCDEFGHIJKLMNOPQRSTUVWXYZ
+*/
+import java.io.*;
+
+class txt_to_bit_conversion
+{
+void bit_conversion(int bit[], int ch)
+{
+int mask;
+int i,k,n1;
+int n;
+mask=128;
+n1=0;
+n=0;
+while(mask>0)
+{
+k=ch & mask;
+if(k!=0)
+bit[n]=1;
+else
+bit[n]=0;
+n=n+1;
+mask=mask>>1;
+}
+}
+}
+
+class bit_level_encryption
+{
+	public static void main(String args[])throws IOException 
+{
+	int n,i,ch,n1;
+int bit[]=new int[8];
+
+FileInputStream fp1=new FileInputStream(args[0]);
+FileOutputStream fp2=new FileOutputStream(args[1]);
+
+n=0; //n= no of bytes in input file
+
+txt_to_bit_conversion TB=new txt_to_bit_conversion();
+
+while((ch=fp1.read()) !=-1)
+{
+	n=n+1;
+	TB.bit_conversion(bit,ch);
+	//to flip bit 0 to bit 1 and bit 1 to bit 0
+	for(i=0;i<8;i++)
+	{
+	if(bit[i]==0)
+	bit[i]=1;
+	else
+	bit[i]=0;
+	}
+	//to perform biitwise XOR operation
+	n1=7;
+	for(i=0;i<4;i++)
+	{
+	bit[n1]=bit[n1]^bit[i];
+	n1=n1-1;
+	}
+	//to convert bits to characters
+	int base=128;
+	int sum=0;
+	for(i=0;i<8;i++)
+	{
+	sum=sum+bit[i]*base;
+	base=base/2;
+	}
+	System.out.print(sum);
+	fp2.write(sum);
+}
+
+System.out.println("\n size of <"+args[0]+">="+n+"Bytes");
+fp1.close();
+fp2.close();
+}
+}
+C:\Java\bin>javac bit_level_encryption.java
+
+C:\Java\bin>java bit_level_encryption myfile.txt bitfile.txt
+179176177182183180181186187184185190191188189170171168169174175172173162163160
+ size of <myfile.txt>=26Bytes
+//encrypted
+C:\Java\bin>type bitfile.txt
+│░▒╢╖┤╡║╗╕╣╛┐╝╜¬½¿⌐«»¼¡óúá

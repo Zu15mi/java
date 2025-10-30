@@ -15,7 +15,9 @@ Number of words
 Number of vowels
 Number of consonants
 Number of digits
-Number of special characters  */
+Number of special characters 
+need to save the file input.txt in bin
+*/
 
 import java.io.*;
 import java.util.*;
@@ -107,3 +109,4 @@ public class file100 {
         }
     }
 }
+

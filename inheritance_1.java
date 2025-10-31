@@ -41,7 +41,7 @@ class Average extends Sum // Average is a derived class
 
 class S_Dev extends Average //S_Dev is a derived class
 {
-	public float s_dev(int a[], int n)
+	public float s_dev(int a[], int n) //double
 	{
 		float av,sd;
 		int i;
@@ -84,4 +84,5 @@ class inheritance_1
 
 		
 		
+
 
